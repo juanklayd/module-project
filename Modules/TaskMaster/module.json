@@ -1,0 +1,13 @@
+{
+    "name": "TaskMaster",
+    "alias": "taskmaster",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\TaskMaster\\Providers\\TaskMasterServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
