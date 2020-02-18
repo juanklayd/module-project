@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin::layouts.master')
 
 @section('content')
 <div class="container">
@@ -23,6 +23,17 @@
                                     </span>
                                 @enderror
                             </div>
+                        </div>
+
+                        <div class="form-group row">
+                        <label for="exampleFormControlSelect1" class="col-md-4 col-form-label text-md-right">User Type</label>
+                        <div class="col-md-6">
+                        <select class="form-control" id="type_id" name="type_id">
+                            @foreach($taskTypes as $taskType)
+                            <option value='{{ $taskType->id }}'>{{ $taskType->type_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                         </div>
 
                         <div class="form-group row">
