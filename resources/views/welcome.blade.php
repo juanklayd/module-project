@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel test test
+                    Laravel New Title
                 </div>
 
                 <div class="links">
