@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserTypeTable extends Migration
+class CreateTaskTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateUserTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_types', function (Blueprint $table) {
+        Schema::create('task_types', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('type_name');
+            $table->string('type_desc');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateUserTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_type');
+        Schema::dropIfExists('task_types');
     }
 }

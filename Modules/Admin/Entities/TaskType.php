@@ -4,7 +4,7 @@ namespace Modules\Admin\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserType extends Model
+class TaskType extends Model
 {
     protected $fillable = [];
 }

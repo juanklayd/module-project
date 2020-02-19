@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Admin\Entities;
+namespace Modules\User\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserType extends Model
+class User extends Model
 {
     protected $fillable = [];
 }

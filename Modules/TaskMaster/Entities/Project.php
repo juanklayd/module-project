@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Admin\Entities;
+namespace Modules\TaskMaster\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserType extends Model
+class Project extends Model
 {
     protected $fillable = [];
 }
