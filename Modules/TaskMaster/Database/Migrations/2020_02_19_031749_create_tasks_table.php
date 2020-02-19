@@ -21,11 +21,12 @@ class CreateTasksTable extends Migration
             $table->string('task_description');
             $table->bigInteger('task_type_id')->unsigned();
             $table->foreign('task_type_id')->references('id')->on('task_types');
-
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('status');
-            $table->string('remarks');
+            $table->time('date_time');
+            $table->date('due_date')
+            $table->string('status')->default('Pending');
+            $table->string('remarks')->nullable();
             $table->timestamps();
         });
     }

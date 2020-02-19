@@ -5,6 +5,21 @@ namespace Modules\TaskMaster\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\TaskMaster\Entities\Project;
+use Modules\TaskMaster\Entities\Tasks;
+use Modules\Admin\Entities\TaskType;
+use App\User;
+use Modules\Admin\Entities\UserDetail;
+use Modules\Admin\Entities\UserType;
+use Auth;
+
+
+
+use Illuminate\Support\Facades\DB;
+use Yajra\Datatables\Datatables;
+
+
+
 
 class TaskMasterController extends Controller
 {
@@ -14,66 +29,232 @@ class TaskMasterController extends Controller
      */
     public function index()
     {
+
         return view('taskmaster::index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
-    public function create()
-    {
-        return view('taskmaster::create');
+    public function project_dtb(){
+
+        $projects = Project::where('user_id', Auth::id())->get();
+                   // $users = DB::table('user')->get();
+         // dd($users);
+
+         return DataTables::of($projects)
+            ->addColumn('actions', function($user) {
+                    return '<button class="btn btn-danger float-right mx-2 destroy" projId="'.$user->id.'" fname="'.$user->firstName.'">Delete</button>
+                            <button class="btn btn-primary float-right edit" projId="'.$user->id.'">Edit</button>
+                            <a href="'.route('viewTasks', $user->id).'" class="btn btn-info float-right mx-2" role="button" aria-pressed="true">View Tasks</a>
+                            ';
+                })
+            ->rawColumns(['actions'])
+            ->make(true);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Response
-     */
-    public function store(Request $request)
+
+    public function addProj(Request $request)
     {
-        //
+         $pro = new Project([
+            'project_name' => $request->projName,
+            'project_desc' => $request->projDesc,
+            'user_id' =>  Auth::id(),
+
+            
+        ]);
+        $pro->save();
     }
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Response
-     */
-    public function show($id)
+     public function editProj(Request $request)
     {
-        return view('taskmaster::show');
+        $proj = Project::where('id', $request->id)->first();
+
+        echo
+                ' 
+             <p class="text-danger emptyUpdate"><em>*Please fill all information below.</em></p>
+                <input type="hidden" name="id" id="peopleId" value="'.$proj->id.'">
+
+                 <input type="text" name="projName" class="form-control mb-1 " placeholder="Project Name" required id="firstNameAdd" value="'.$proj->project_name.'">
+
+                 <textarea class="form-control" name="projDesc" rows="3" placeholder="Project Description." required>'.$proj->project_desc.'</textarea>';
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Response
-     */
-    public function edit($id)
+
+    public function saveEditProj(Request $request)
     {
-        return view('taskmaster::edit');
+        
+        $proj = Project::where('id', $request->id)->first();
+        $proj->project_name =  $request->projName;
+        $proj->project_desc =  $request->projDesc;
+        
+        
+        $proj->save();
+
+       
     }
 
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
+    public function destroyProj(Request $request)
     {
-        //
+        $proj = Project::find($request->id);
+        
+        $proj->delete();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
+   
+     public function task_dtb($id){
+
+        $tasks = Tasks::has('project')->where('project_id',$id)->get();
+
+         return DataTables::of($tasks)
+            ->addColumn('actions', function($task) {
+                    return '<button class="btn btn-danger float-right mx-2 destroy" taskId="'.$task->id.'" >Delete</button>
+                            <button class="btn btn-primary float-right edit" taskId="'.$task->id.'">Edit</button>
+                            
+                            ';
+                })
+            ->rawColumns(['actions'])
+            ->make(true);
     }
+
+
+
+    //************TASKS
+
+     public function viewTasks($id){
+        
+        $project = Project::find($id);
+        $types = TaskType::all();
+
+        $users = User::join('user_types', 'user_types.id', 'users.type_id')
+                    ->join('user_details', 'user_details.user_id', 'users.id')
+                    ->where('type_name', 'User')
+                    ->where('first_name', '!=', 'null')
+                    ->select('*','users.id as u_id')
+                    ->get();
+                  
+
+        return view('taskmaster::viewTasks', compact('project', 'types', 'users'));
+    }
+
+
+    public function addTask(Request $request)
+    {
+         $task = new Tasks([
+            'project_id' => $request->projId,
+            'task_title' => $request->taskTitle,
+            'task_description' => $request->taskDesc,
+            'task_type_id' =>$request->taskType,
+            'user_id' => $request->userId,
+            'date_time' => $request->dateTime,
+            'due_date' => $request->dueDate,
+            'status' => 'pending',
+
+
+        ]);
+        $task->save();
+    }
+
+    public function destroyTask(Request $request)
+    {
+        $taskdes = Tasks::find($request->id);
+        
+        $taskdes->delete();
+    }
+
+    public function editTask(Request $request)
+    {
+        $task = Tasks::where('id', $request->id)->first();
+        $types = TaskType::all();
+
+        $users = User::join('user_types', 'user_types.id', 'users.type_id')
+                    ->join('user_details', 'user_details.user_id', 'users.id')
+                    ->where('type_name', 'User')
+                    ->where('first_name', '!=', 'null')
+                    ->select('*','users.id as u_id')
+                    ->get();
+
+        echo '
+
+            <p class="text-danger empty"><em>*Please fill all information below.</em></p>
+    
+              
+
+              <div class="input-group input-group-lg mb-2">
+                  <input type="text" name="taskTitle" class="form-control" placeholder="Task title" value="'.$task->task_title.'">   
+              </div>
+
+              <div class="mb-2">
+                  <select class="form-control" name="taskType">
+                    <option>--select task type--</option>';
+
+                    foreach ($types as $type){
+                        if($type->id == $task->task_type_id){
+                            echo '<option selected value="'.$type->id.'">'.$type->type_name.'</option>'; 
+
+                        }else{
+                            echo '<option value="'.$type->id.'">'.$type->type_name.'</option>'; 
+                        }
+                    }
+        echo '
+                  </select>   
+              </div>
+
+              <div class="mb-2">
+
+                  <select class="form-control" name="userId">
+                    <option>--select user--</option>';
+
+                    foreach ($users as $user){
+
+                        if($user->u_id == $task->user_id){
+                            echo '<option selected value="'.$user->u_id.'">'.$user->first_name.' '.$user->lastname.'</option>';
+
+                        }else{
+                            echo '<option value="'.$user->id.'">'.$user->first_name.' '.$user->lastname.'</option>';
+                        }
+                    }
+        echo'
+                  </select>   
+              </div>
+              <div class="row mb-2">
+                <div class="col-md-6">
+                  <label>Due Date:</label>
+                  <input type="date" name="dueDate" class="form-control" value="'.$task->due_date.'">
+                </div>
+                
+                <div class="col-md-6">
+                  <label>Due Time:</label>
+                  <input type="time" name="dateTime" class="form-control" value="'.$task->date_time.'">
+                </div>
+              </div>
+              
+
+              <textarea class="form-control" name="taskDesc" rows="3" placeholder="Task Description." required>'.$task->task_description.'</textarea>
+
+              <input type="hidden" name="id" value="'.$task->id.'">
+
+              
+              
+
+        ';
+
+    }
+
+    public function saveEditTask(Request $request)
+    {
+        
+        $task = Tasks::where('id', $request->id)->first();
+
+        $task->task_title = $request->taskTitle;
+        $task->task_description = $request->taskDesc;
+        $task->task_type_id =$request->taskType;
+        $task->user_id = $request->userId;
+        $task->date_time = $request->dateTime;
+        $task->due_date = $request->dueDate;
+        
+        
+        $task->save();
+
+       
+    }
+
 }
