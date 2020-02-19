@@ -106,7 +106,7 @@
 
    
 
-asdasdasdasd
+
 
     <script type="text/javascript">
 
@@ -128,7 +128,7 @@ asdasdasdasd
         "columns": [
             { "data": "profile_picture" },
             { "data": "username" },
-            { "data": "name" },
+            { "data": "first_name" },
             { "data": "last_name" },
             { "data": "mid_name" },
             { "data": "actions" },
