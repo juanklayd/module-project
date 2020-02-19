@@ -128,7 +128,7 @@ asdasdasdasd
         "columns": [
             { "data": "profile_picture" },
             { "data": "username" },
-            { "data": "first_name" },
+            { "data": "name" },
             { "data": "last_name" },
             { "data": "mid_name" },
             { "data": "actions" },
