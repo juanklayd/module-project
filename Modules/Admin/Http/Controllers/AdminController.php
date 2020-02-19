@@ -81,7 +81,7 @@ class AdminController extends Controller
 
                   <input type="text" name="firstName" class="form-control mb-1 " placeholder="First Name" required id="firstNameAdd" value="'.$userDetail->first_name.'">
 
-                   <input type="text" name="midName" class="form-control mb-1 firstNameEdit" placeholder="First Name" required id="firstNameAdd" value="'.$userDetail->mid_name.'">
+                   <input type="text" name="midName" class="form-control mb-1 firstNameEdit" placeholder="Middle Name" required id="firstNameAdd" value="'.$userDetail->mid_name.'">
               
                   <input type="text" name="lastName" class="form-control lastNameEdit" placeholder="Last Name" required id="lastNameAdd" value="'.$userDetail->last_name.'">';
 

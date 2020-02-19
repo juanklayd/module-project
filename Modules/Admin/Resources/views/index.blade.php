@@ -3,7 +3,7 @@
 @section('content')
 <div class="alert alert-info alert-dismissible fade show" role="alert"></div>
 
-    <div class="container mt-3">
+    <div class="container">
         
         <h1>User accounts</h1>
         <hr>
@@ -212,8 +212,8 @@
       //delete
        $(document).on('click','.destroy',function(){
       var conf = confirm('Are you sure you want to delete this record?');
-      var id = $(this).attr('projId');
-      
+      var id = $(this).attr('userid');
+
       if(conf){
         $.ajax({
           url:"{{route('destroyUser')}}",
