@@ -38,4 +38,23 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function userDetail()
+    {
+        return $this->hasOne('Modules\Admin\Entities\UserDetail');
+    }
+
+    public function userType()
+    {
+        return $this->belongsTo('Modules\Admin\Entities\UserType');
+    }
+
+    public function task()
+    {
+        return $this->hasMany('Modules\TaskManager\Entities\Task');
+    }
+    public function project()
+    {
+        return $this->hasMany('Modules\TaskManager\Entities\Project');
+    }
 }

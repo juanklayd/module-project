@@ -12,5 +12,15 @@
 */
 
 Route::prefix('admin')->group(function() {
-    Route::get('/', 'AdminController@index')->name('Admin');
+    Route::get('/', 'AdminController@index');
+    Route::get('/people_dtb', 'AdminController@usersShow')->name('usersShow');
+    Route::post('/storeAdd', 'AdminController@storeAdd')->name('storeAdd');
+    Route::post('/editUser', 'AdminController@editUser')->name('editUser');
+    Route::post('/saveEditUser', 'AdminController@saveEditUser')->name('saveEditUser');
+    Route::post('/destroyUser', 'AdminController@destroyUser')->name('destroyUser');
+    
+
+
+
+
 });

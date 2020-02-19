@@ -6,5 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserType extends Model
 {
-    protected $fillable = [];
+    protected $guarded = [];
+
+     public function user()
+    {
+        return $this->hasMany('App\User');
+    }
 }
+
+

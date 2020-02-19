@@ -5,75 +5,119 @@ namespace Modules\Admin\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
+use App\User;
+use Modules\Admin\Entities\UserDetail;
+use Modules\Admin\Entities\UserType;
+use Illuminate\Support\Facades\Hash;
+use Yajra\Datatables\Datatables;
+
+
 
 class AdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Response
-     */
+
     public function index()
     {
-        return view('admin::index');
+
+         $types = UserType::where('type_name','!=','Admin')->get();
+         
+        return view('admin::index', compact('types'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
-    public function create()
-    {
-        return view('admin::create');
+    public function usersShow(){
+        $users = UserDetail::join('users', 'users.id', 'user_details.user_id')
+                ->where('type_id', '!=', 1)
+                ->select('*','user_details.id as ud_id')
+                ->get();
+              
+         // $users = DB::table('user')->get();
+         // dd($users);
+
+         return DataTables::of($users)
+            ->addColumn('actions', function($user) {
+                    return '<button class="btn btn-danger float-right mx-2 destroy" userId="'.$user->id.'" fname="'.$user->firstName.'">Delete</button>
+                            <button class="btn btn-primary float-right edit" userId="'.$user->id.'">Edit</button>
+                            ';
+                })
+            ->rawColumns(['actions'])
+            ->make(true);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Response
-     */
-    public function store(Request $request)
+    
+    public function storeAdd(Request $request)
     {
-        //
+         $users = new User([
+            'username' => $request->get('username'),
+            'password' => Hash::make($request->get('username')),
+            'type_id' => $request->get('userType'),
+            
+        ]);
+        $users->save();
+        $users->id;
+        $userDetail = new UserDetail([
+            
+            'user_id' => $users->id,
+            
+        ]);
+        $userDetail->save();
+
+       
     }
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Response
-     */
-    public function show($id)
+    public function editUser(Request $request)
     {
-        return view('admin::show');
+        $user = User::where('id', $request->id)->first();
+// dd($user);
+        $userDetail = UserDetail::where('user_id', $request->id)->first();
+
+
+        echo
+                ' 
+             <p class="text-danger emptyUpdate"><em>*Please fill all information below.</em></p>
+                <input type="hidden" name="id" id="peopleId" value="'.$user->id.'">
+
+                 <input type="text" name="username" class="form-control mb-1 " placeholder="First Name" required id="firstNameAdd" value="'.$user->username.'">
+
+                  <input type="text" name="firstName" class="form-control mb-1 " placeholder="First Name" required id="firstNameAdd" value="'.$userDetail->first_name.'">
+
+                   <input type="text" name="midName" class="form-control mb-1 firstNameEdit" placeholder="First Name" required id="firstNameAdd" value="'.$userDetail->mid_name.'">
+              
+                  <input type="text" name="lastName" class="form-control lastNameEdit" placeholder="Last Name" required id="lastNameAdd" value="'.$userDetail->last_name.'">';
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Response
-     */
-    public function edit($id)
+
+    public function saveEditUser(Request $request)
     {
-        return view('admin::edit');
+        $user = User::find($request->id);
+        $user->username =  $request->username;
+        
+        $user->save();
+
+        $userDetail = UserDetail::where('user_id', $request->id)->first();
+        $userDetail->first_name =  $request->firstName;
+        $userDetail->last_name =  $request->lastName;
+        $userDetail->mid_name =  $request->midName;
+
+        
+        $userDetail->save();
+
+       
     }
 
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
+
+    public function destroyUser(Request $request)
     {
-        //
+        $userDetail = UserDetail::where('user_id', $request->id)->first();
+        $user = User::find($request->id);
+
+        $userDetail->delete();
+        $user->delete();
+
+        
+        // $this->pickDate($request);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+
 }
