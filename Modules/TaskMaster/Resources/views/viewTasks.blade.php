@@ -26,8 +26,8 @@
 
                         
                     
-                    <table id="table_id" class="display">
-                      <thead>
+                    <table id="table_id" class="table table-bordered">
+                      <thead class="thead thead-dark">
                           <tr>
                               <th>Title</th>
                               <th>Description</th>

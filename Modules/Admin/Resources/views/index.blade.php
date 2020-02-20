@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="alert alert-info alert-dismissible fade show" role="alert"></div>
-    <div class="container">
+
         <hr>
         <div class="row">
             <div class="col-md-8">
@@ -13,8 +13,8 @@
             </div>
         </div>
         <hr>
-    	<table id="table_id" class="display">
-		    <thead>
+    	<table id="table_id" class="table table-bordered">
+		    <thead class="thead thead-dark">
 	            <tr>
                   <th>Profile Picture</th>
                   <th>User Name</th>
@@ -26,7 +26,7 @@
 		    </thead>
 		        
 		</table>
-    </div>
+
 
 
     <!-- Modal for Edditing -->
