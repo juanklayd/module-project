@@ -1,6 +1,13 @@
 @extends('taskmaster::layouts.master')
 
 @section('content')
+<style type="text/css">
+  tr{
+    height: 100px;
+  }
+
+</style>
+
    <div class="alert alert-info alert-dismissible fade show" role="alert"></div>
 
 
@@ -15,21 +22,18 @@
                 <button type="button" class="btn btn-outline-primary float-right" id="addBtn" data-target="#addModal" data-toggle="modal" >Add a new Project</button>
             </div>
         </div>
-
         <hr>
-    	<table id="table_id" class="display">
-		    <thead>
+    	<table id="table_id" class="table table-bordered">
+		    <thead class="thead thead-dark">
 	            <tr>
-
 	                <th>Project Name</th>
                     <th>Project Description</th>
-                    <th>Actions</th>
-	               
+                    <th class="thwidth">Form Actions</th>
 	            </tr>
-		    </thead>
-		        
+		    </thead>   
 		</table>
 
+    <br>
     
 
     <!-- Modal for Adding -->
@@ -54,15 +58,14 @@
                   <input type="text" name="projName" class="form-control" placeholder="Project Name">   
               </div>
 
-              <textarea class="form-control" name="projDesc" rows="3" placeholder="Project Description." required></textarea>
+              <textarea maxlength="80" class="form-control" name="projDesc" rows="3" placeholder="Project Description." required></textarea>
               
             </div>
 
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
              
                   <input type="hidden" name="date" id="dateAdd">
-                  <button type="submit" class="btn btn-primary add">Save project</button>
+                  <button type="submit" class="btn btn-outline-primary add">Save project</button>
             </div>
           </form>
         </div>
@@ -87,8 +90,7 @@
                   
               </div>
               <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary">Save changes</button>
+                  <button type="submit" class="btn btn-outline-primary">Save changes</button>
               </div>
           </form>
         </div>

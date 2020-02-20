@@ -16,8 +16,6 @@
 
         @include('admin::includes.adminMain')
 
-        <hr>
-
         @include('admin::includes.adminFooter')
         {{-- Laravel Mix - JS File --}}
         {{-- <script src="{{ mix('js/admin.js') }}"></script> --}}

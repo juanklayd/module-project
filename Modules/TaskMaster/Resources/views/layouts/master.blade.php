@@ -13,9 +13,9 @@
     </head>
     <body>
         @include('taskmaster::includes.taskNav')
-        <br>
- 
+        <hr>
             @include('taskmaster::includes.taskMain')
+
 
             @include('taskmaster::includes.taskFooter')
         {{-- Laravel Mix - JS File --}}

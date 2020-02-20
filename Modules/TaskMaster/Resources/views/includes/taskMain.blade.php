@@ -1,3 +1,3 @@
-<div class="jumbotron">
+<div class="container">
 	@yield('content')
 </div>

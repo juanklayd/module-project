@@ -16,7 +16,7 @@
     	<table id="table_id" class="table table-bordered">
 		    <thead class="thead thead-dark">
 	            <tr>
-                  <th>Profile Picture</th>
+                  <th>Image</th>
                   <th>User Name</th>
 	                <th>First Name</th>
 	                <th>Last Name</th>
