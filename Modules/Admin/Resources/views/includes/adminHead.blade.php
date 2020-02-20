@@ -1,34 +1,26 @@
 
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<!--CSS-->
-<!-- <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}"> -->
+  <title>Admin</title>
 
-<!--JS-->
-<!-- <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/jquery-3.4.1.slim.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script> -->
+  <link href="{{ asset('css/font.googleapis.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/fontawesome-free-5.10.2-web/css/all.css') }}">
 
- <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.12.0/css/all.css">
-
-        
-
-        <!-- bootstrap -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
-        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-
-        <!-- JS, Popper.js, and jQuery -->
+  <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" >
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.dataTables.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
 
      
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" ></script>
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+  <script src="{{ asset('js/jquery-3.4.1.slim.min.js') }}" ></script>
+  <script src="{{ asset('js/jquery-3.4.1.min.js') }}" ></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="{{ asset('js/popper.min.js') }}" ></script>
+  <script src="{{ asset('js/bootstrap.min.js') }}" ></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
     
-        <script type="text/javascript" src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  
 
           
 
@@ -46,3 +38,6 @@
               z-index: 9;
             }
        </style>
+
+</head>
+        

@@ -11,6 +11,7 @@ use Modules\Admin\Entities\UserDetail;
 use Modules\Admin\Entities\UserType;
 use Illuminate\Support\Facades\Hash;
 use Yajra\Datatables\Datatables;
+use Auth;
 
 
 
@@ -26,13 +27,7 @@ class AdminController extends Controller
     }
 
     public function usersShow(){
-        $users = UserDetail::join('users', 'users.id', 'user_details.user_id')
-                ->where('type_id', '!=', 1)
-                ->select('*','user_details.id as ud_id')
-                ->get();
-              
-         // $users = DB::table('user')->get();
-         // dd($users);
+        $users = User::with('userDetail');
 
          return DataTables::of($users)
             ->addColumn('actions', function($user) {

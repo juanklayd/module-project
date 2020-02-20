@@ -9,7 +9,7 @@
               <h1 class=" lead">User accounts</h1>
             </div>
             <div class="col-md-4">
-
+                
             </div>
         </div>
         <hr>
@@ -17,10 +17,8 @@
 		    <thead>
 	            <tr>
                   <th>Profile Picture</th>
-                  <th>User Name</th>
-	                <th>First Name</th>
-	                <th>Last Name</th>
-                  <th>Middle Name</th>
+                  <th>Username</th>
+	                <th>Name</th>
                   <th>Actions</th>
 	            </tr>
 		    </thead>
@@ -43,7 +41,6 @@
           <form id ='editForm'>
           @csrf
               <div class="modal-body" id="editBody">
-
                   
               </div>
               <div class="modal-footer">
@@ -72,15 +69,39 @@
         $('.emptyUpdate').hide();
 
         var dataTable= $('#table_id').DataTable( {
-        "ajax": "{{route('usersShow')}}",
-        "columns": [
-            { "data": "profile_picture" },
-            { "data": "username" },
-            { "data": "first_name" },
-            { "data": "last_name" },
-            { "data": "mid_name" },
-            { "data": "actions" },
-        ]
+            processing: true,
+            serverSide: true,
+            dataType: 'json',
+            language:{
+              emptyTable: "No User Added.",
+            },
+            "ajax": "{{route('usersShow')}}",
+            "columns": [
+                { "data": "userDetail.profile_picture"},
+                { "data": "username" },
+                { "data": "first_name" },
+                { "data": "actions" },
+            ],
+            columnDefs:[
+                {
+                  "targets":[0],
+                  "render": function(data, type, row){
+                        var pic = "images/"+row.profile_picture;
+                        
+                        return "<img style='width:150px; height:150px;' src='{{ asset('"+pic+"') }}'/>"
+                  }
+                },
+                {
+                  "targets":[2],
+                  "render": function(data, type, row){
+                        if(row.first_name == null){
+                            return "<i>(To be Fill-up)</i>"
+                        }else{
+                          return row.first_name + " " + row.mid_name + " " + row.last_name;
+                        }
+                  }
+                }
+            ],
         } );
 
 
