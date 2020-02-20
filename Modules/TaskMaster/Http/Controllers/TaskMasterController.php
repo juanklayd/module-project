@@ -37,9 +37,11 @@ class TaskMasterController extends Controller
 
     public function project_dtb(){
 
-        $projects = Project::where('user_id', Auth::id())->get();
+        $projects = Project::where('user_id', Auth::id())
+        ->where('archive_status', '!=', 'Archived')
+        ->get();
                    // $users = DB::table('user')->get();
-         // dd($users);
+         // dd($);
 
          return DataTables::of($projects)
             ->addColumn('actions', function($user) {
@@ -96,9 +98,15 @@ class TaskMasterController extends Controller
 
     public function destroyProj(Request $request)
     {
-        $proj = Project::find($request->id);
+        // $proj = Project::find($request->id);
         
-        $proj->delete();
+        // $proj->delete();
+
+        $proj = Project::where('id', $request->id)->first();
+        $proj->archive_status =  'Archived';
+        
+        $proj->save();
+
     }
 
    
