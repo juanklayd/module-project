@@ -55,7 +55,7 @@
               
 
               <div class="input-group input-group-lg mb-2">
-                  <input type="text" name="projName" class="form-control" placeholder="Project Name">   
+                  <input type="text" maxlength="30" name="projName" class="form-control" placeholder="Project Name">   
               </div>
 
               <textarea maxlength="80" class="form-control" name="projDesc" rows="3" placeholder="Project Description." required></textarea>
