@@ -86,9 +86,10 @@
                 {
                   "targets":[0],
                   "render": function(data, type, row){
-                        var pic = "images/"+row.profile_picture;
-                        
-                        return "<img style='width:150px; height:150px;' src='{{ asset('"+pic+"') }}'/>"
+
+                        var aa = "<img style='width:150px; id='imageid' height:150px;' src=''/>";
+                        document.getElementById("imageid").src="{{ asset('images/"+row.profile_picture+"') }}";
+                        return aa;
                   }
                 },
                 {
@@ -105,8 +106,6 @@
         } );
 
 
-
-    //show edit form
   $(document).on('click','.edit',function(){
           var id = $(this).attr('userId');
 
@@ -121,7 +120,6 @@
               $('#editModal').modal('show');
              
               $('#editBody').html(data);
-             
             }   
           });  
         });
