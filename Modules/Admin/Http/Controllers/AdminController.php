@@ -45,25 +45,6 @@ class AdminController extends Controller
     }
 
     
-    public function storeAdd(Request $request)
-    {
-         $users = new User([
-            'username' => $request->get('username'),
-            'password' => Hash::make($request->get('username')),
-            'type_id' => $request->get('userType'),
-            
-        ]);
-        $users->save();
-        $users->id;
-        $userDetail = new UserDetail([
-            
-            'user_id' => $users->id,
-            
-        ]);
-        $userDetail->save();
-
-       
-    }
 
     public function editUser(Request $request)
     {

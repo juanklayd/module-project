@@ -9,7 +9,7 @@
               <h2>User accounts</h2>
             </div>
             <div class="col-md-4">
-                <button type="button" class="btn btn-outline-dark col-md-8 float-right" id="addBtn" data-target="#addModal" data-toggle="modal" >Add User</button>
+
             </div>
         </div>
         <hr>
@@ -131,31 +131,6 @@
         ]
         } );
 
-        //Adding
-    $( "#addForm" ).submit(function( event ) {
-        event.preventDefault();
-
-        $.ajax({
-          url:"{{route('storeAdd')}}",
-          method:"POST",
-          data: $("#addForm").serialize(),
-          success:function(data){
-            $('#addModal').modal('hide');
-            dataTable.ajax.reload();
-            
-            $("#addForm")[0].reset();
-            $('.empty').hide();
-            $('.alert').append('<span id="alertMessage">Peson Added!</span>');
-            $('.alert').show();
-            $(".alert").delay(4000).fadeOut(500);
-            setTimeout(function(){
-              $('#alertMessage').remove();
-            }, 5000);
-            
-          }
-              
-        }); 
-    });   
 
 
     //show edit form
