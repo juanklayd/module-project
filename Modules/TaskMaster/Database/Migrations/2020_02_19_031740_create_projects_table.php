@@ -19,6 +19,7 @@ class CreateProjectsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('project_name');
             $table->string('project_desc');
+            $table->string('archive_status')->nullable();
             $table->timestamps();
         });
     }

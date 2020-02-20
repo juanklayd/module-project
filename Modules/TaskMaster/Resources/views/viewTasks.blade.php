@@ -165,7 +165,27 @@
         $('.emptyUpdate').hide();
 
 
-        
+        // const date = new Date();
+        // const formattedDate = date.toLocaleDateString('en-GB', {
+        //   day: 'numeric', month: 'short', year: 'numeric'
+        // }).replace(/ /g, '-');
+
+        var date = new Date();
+
+          var newd      = date.toLocaleDateString();
+          var month     = date.getMonth()+1;
+          var date1     = date.getDate();
+          var year      = date.getFullYear();
+          
+          if(month <10){
+            month = '0'+month;
+
+          }if(date1 <10){
+            date1 = '0'+date1;
+          }
+  
+        var newDate = year+'-'+month+'-'+date1;
+ 
 
         var dataTable= $('#table_id').DataTable( {
         "ajax": "{{route('task_dtb', $project->id)}}",
@@ -178,8 +198,15 @@
             { "data": "remarks" },
             // { "data": "type_name" },
             { "data": "actions" },
-        ]
+        ],
 
+        'rowCallback': function(row, data, index){
+            
+            if(data.due_date < newDate){
+                $(row).css('background-color', '#fa6057');
+            }
+            
+          }
         } );
 
 
