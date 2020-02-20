@@ -14,9 +14,9 @@
     <body>
         @include('user::includes.userNav')
         <br>
-        <div class="container">
+
             @include('user::includes.userMain')
-        </div>
+
 
             @include('user::includes.userFooter')
         {{-- Laravel Mix - JS File --}}

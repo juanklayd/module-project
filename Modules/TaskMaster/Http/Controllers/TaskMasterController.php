@@ -108,8 +108,8 @@ class TaskMasterController extends Controller
 
          return DataTables::of($tasks)
             ->addColumn('actions', function($task) {
-                    return '<button class="btn btn-danger float-right mx-2 destroy" taskId="'.$task->id.'" >Delete</button>
-                            <button class="btn btn-primary float-right edit" taskId="'.$task->id.'">Edit</button>
+                    return '<button class="btn btn-outline-danger col-md-5 float-right mx-2 destroy" taskId="'.$task->id.'" >Delete</button>
+                            <button class="btn btn-outline-primary col-md-5 float-right edit" taskId="'.$task->id.'">Edit</button>
                             
                             ';
                 })

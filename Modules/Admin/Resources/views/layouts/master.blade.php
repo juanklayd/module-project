@@ -14,9 +14,8 @@
     <body>
         @include('admin::includes.adminNav')
 
-        <div class="container">
         @include('admin::includes.adminMain')
-        </div>
+
         <hr>
 
         @include('admin::includes.adminFooter')

@@ -1,28 +1,29 @@
-@extends('admin::layouts.master')
+@extends('taskmaster::layouts.master')
 
 @section('content')
 
    <div class="alert alert-info alert-dismissible fade show" role="alert"></div>
 
-   
-    <div class="flex-center position-ref full-height">
-        <div class="container ">
-            <div class="row">
+  
+            <div class="form-row">
               <div class="col-md-12">
               
-                  <i class="fa fa-angle-right" aria-hidden="true"></i> <a href="{{ url('taskmaster') }}">Projects</a>
+                  <i class="fa fa-angle-right" aria-hidden="true"></i> <a class="lead" href="{{ url('taskmaster') }}">Projects</a>
                   <span class="text-muted"> 
                     <i class="fa fa-angle-right" aria-hidden="true"></i> Tasks
                   </span>
                   <br>
                   <br>
-                  <h2>Tasks for {{ $project->project_name}}</h2>
-                  <hr>
                   <div class="row">
-                      <div class="col-md-12 mb-2">
-                          <button type="button" class="btn btn-primary float-right" id="addBtn" data-target="#addModal" data-toggle="modal" >Add a task</button>
+                    <div class="col-md-8">
+                  <h2 class="lead">Tasks for {{ $project->project_name}}</h2>
+                </div>
+                  <div class="col-md-4">
+                          <button type="button" class="btn btn-outline-dark col-md-8 float-right" id="addBtn" data-target="#addModal" data-toggle="modal" >Add a task</button>
                       </div>
                   </div>
+                  <hr>
+
                         
                     
                     <table id="table_id" class="display">
@@ -46,10 +47,6 @@
 
                 </div>
             </div>
-        </div>
-    </div>
-
-
 
 
     <!-- Modal for Adding -->

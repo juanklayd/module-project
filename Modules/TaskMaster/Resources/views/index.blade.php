@@ -3,7 +3,7 @@
 @section('content')
    <div class="alert alert-info alert-dismissible fade show" role="alert"></div>
 
-    <div class="container">
+
         
         <div class="form-row">
 
@@ -29,7 +29,7 @@
 		    </thead>
 		        
 		</table>
-    </div>
+
     
 
     <!-- Modal for Adding -->

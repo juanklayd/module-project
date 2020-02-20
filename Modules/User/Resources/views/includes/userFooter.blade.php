@@ -61,6 +61,7 @@
 <div class="clearfix"></div>
 </div>
 </div>
+</div>
 <!-- END OF FOOTER -->
 
 <style type="text/css">
