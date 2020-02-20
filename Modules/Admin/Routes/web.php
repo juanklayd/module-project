@@ -18,6 +18,8 @@ Route::prefix('admin')->group(function() {
     Route::post('/editUser', 'AdminController@editUser')->name('editUser');
     Route::post('/saveEditUser', 'AdminController@saveEditUser')->name('saveEditUser');
     Route::post('/destroyUser', 'AdminController@destroyUser')->name('destroyUser');
+
+    Route::get('/adduser', 'AdminController@adduser')->name('adduser');
     
 
 

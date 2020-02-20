@@ -2,9 +2,7 @@
 
 @section('content')
 <div class="alert alert-info alert-dismissible fade show" role="alert"></div>
-
     <div class="container">
-        
         <hr>
         <div class="row">
             <div class="col-md-8">
