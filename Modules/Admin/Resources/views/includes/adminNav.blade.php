@@ -9,9 +9,6 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="/Admin">Home <span class="sr-only">(current)</span></a>
     </div>
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="{{ route('register') }}">Add User</a>
-    </div>
 
     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

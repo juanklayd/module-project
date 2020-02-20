@@ -9,7 +9,7 @@
               <h1 class=" lead">User accounts</h1>
             </div>
             <div class="col-md-4">
-
+              <a href="{{ route('register') }}" class="btn btn-outline-primary col-md-6 float-right">Add User</a>
             </div>
         </div>
         <hr>
