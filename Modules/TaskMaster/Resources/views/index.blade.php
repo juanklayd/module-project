@@ -4,17 +4,19 @@
    <div class="alert alert-info alert-dismissible fade show" role="alert"></div>
 
     <div class="container">
-        <span class="text-muted"> 
-                    <i class="fa fa-angle-right" aria-hidden="true"></i> Projects
-                  </span>
-        <h1>Projects</h1>
+        
+        <div class="form-row">
 
-        <hr>
-        <div class="row">
-            <div class="col-md-12 mb-2">
-                <button type="button" class="btn btn-primary float-right" id="addBtn" data-target="#addModal" data-toggle="modal" >Add a project</button>
+            <div class="col-md-8">
+              <h1 class="lead">Projects</h1>
+            </div>
+
+            <div class="col-md-4">
+                <button type="button" class="btn btn-outline-primary float-right" id="addBtn" data-target="#addModal" data-toggle="modal" >Add a new Project</button>
             </div>
         </div>
+
+        <hr>
     	<table id="table_id" class="display">
 		    <thead>
 	            <tr>

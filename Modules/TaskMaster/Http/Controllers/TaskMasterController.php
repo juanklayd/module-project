@@ -43,9 +43,9 @@ class TaskMasterController extends Controller
 
          return DataTables::of($projects)
             ->addColumn('actions', function($user) {
-                    return '<button class="btn btn-outline-danger float-right mx-2 destroy" projId="'.$user->id.'" fname="'.$user->firstName.'">Delete</button>
-                            <button class="btn btn-outline-primary float-right edit" projId="'.$user->id.'">Edit</button>
-                            <a href="'.route('viewTasks', $user->id).'" class="btn btn-outline-info float-right mx-2" role="button" aria-pressed="true">View Tasks</a>
+                    return '<a href="'.route('viewTasks', $user->id).'" class="btn btn-outline-info mx-2" role="button" aria-pressed="true">View Tasks</a>
+                            <button class="btn btn-outline-primary edit" projId="'.$user->id.'">Edit</button>
+                            <button class="btn btn-outline-danger mx-2 destroy" projId="'.$user->id.'" fname="'.$user->firstName.'">Delete</button>
                             ';
                 })
             ->rawColumns(['actions'])
