@@ -40,14 +40,12 @@ class TaskMasterController extends Controller
         $projects = Project::where('user_id', Auth::id())
         ->where('archive_status', '!=', 'Archived')
         ->get();
-                   // $users = DB::table('user')->get();
-         // dd($);
-
+                   
          return DataTables::of($projects)
-            ->addColumn('actions', function($user) {
-                    return '<a href="'.route('viewTasks', $user->id).'" class="btn btn-outline-info mx-2" role="button" aria-pressed="true">View Tasks</a>
-                            <button class="btn btn-outline-primary edit" projId="'.$user->id.'">Edit</button>
-                            <button class="btn btn-outline-danger mx-2 destroy" projId="'.$user->id.'" fname="'.$user->firstName.'">Delete</button>
+            ->addColumn('actions', function($proj) {
+                    return '<a href="'.route('viewTasks', $proj->id).'" class="btn btn-outline-info mx-2" role="button" aria-pressed="true">View Tasks</a>
+                            <button class="btn btn-outline-primary edit" projId="'.$proj->id.'">Edit</button>
+                            <button class="btn btn-outline-danger mx-2 destroy" projId="'.$proj->id.'" fname="'.$proj->firstName.'">Delete</button>
                             ';
                 })
             ->rawColumns(['actions'])
