@@ -17,6 +17,7 @@ use Auth;
 
 use Illuminate\Support\Facades\DB;
 use Yajra\Datatables\Datatables;
+use Illuminate\Support\Facades\Hash;
 
 
 
@@ -31,8 +32,14 @@ class TaskMasterController extends Controller
     {
       $id =  Auth::id();
       $userDetails = UserDetail::where('user_id', $id)->get();
+      $user = User::find($id);
+      if (Hash::check('123123123', $user->password)) {
+        return view('taskmaster::updateProfile');
+      } else{
+        return view('taskmaster::index');
+      }
 
-      return view('taskmaster::index');
+
     }
 
     public function project_dtb(){
