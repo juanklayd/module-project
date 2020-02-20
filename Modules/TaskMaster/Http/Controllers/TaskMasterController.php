@@ -29,8 +29,10 @@ class TaskMasterController extends Controller
      */
     public function index()
     {
+      $id =  Auth::id();
+      $userDetails = UserDetail::where('user_id', $id)->get();
 
-        return view('taskmaster::index');
+      return view('taskmaster::index');
     }
 
     public function project_dtb(){
