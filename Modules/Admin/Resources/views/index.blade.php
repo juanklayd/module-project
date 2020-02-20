@@ -6,7 +6,7 @@
         <hr>
         <div class="row">
             <div class="col-md-8">
-              <h2>User accounts</h2>
+              <h1 class=" lead">User accounts</h1>
             </div>
             <div class="col-md-4">
 
@@ -29,60 +29,13 @@
     </div>
 
 
-
-<!-- Modal for Adding -->
-    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Add a user</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-
-          <form  id="addForm" method="POST">
-            @csrf
-            <div class="modal-body">
-              <p class="text-danger empty"><em>*Please fill all information below.</em></p>
-              
-              <div class="mb-2">
-                  <select class="form-control" name="userType">
-                    <option>--select user type--</option>
-                    @foreach ($types as $type)
-                      <option value="{{$type->id}}">{{ $type->type_name }}</option>
-                    @endforeach
-                  </select>   
-              </div>
-
-              <div class="input-group input-group-lg mb-2">
-                  <input type="text" name="username" class="form-control" placeholder="User Name">   
-              </div>
-
-              <div class="input-group input-group-lg mb-2">
-                  <input type="password" name="password" class="form-control" placeholder="Password">   
-              </div>
-              
-            </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-             
-                  <input type="hidden" name="date" id="dateAdd">
-                  <button type="submit" class="btn btn-outline-primary add">Save</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-
     <!-- Modal for Edditing -->
 
     <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Edit record</h5>
+            <h5 class="modal-title lead" id="exampleModalLabel">Edit record</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -94,7 +47,6 @@
                   
               </div>
               <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
                   <button type="submit" class="btn btn-outline-primary">Save changes</button>
               </div>
           </form>
