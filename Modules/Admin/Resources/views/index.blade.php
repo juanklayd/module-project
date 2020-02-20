@@ -104,8 +104,6 @@
       </div>
     </div>
 
-   asdadasd
-
 
 
     <script type="text/javascript">
