@@ -5,25 +5,25 @@
 
     <div class="container">
         
-        <h1>User accounts</h1>
         <hr>
         <div class="row">
-            <div class="col-md-12 mb-2">
-                <button type="button" class="btn btn-primary float-right" id="addBtn" data-target="#addModal" data-toggle="modal" >Add a user</button>
+            <div class="col-md-8">
+              <h2>User accounts</h2>
+            </div>
+            <div class="col-md-4">
+                <button type="button" class="btn btn-outline-dark col-md-8 float-right" id="addBtn" data-target="#addModal" data-toggle="modal" >Add User</button>
             </div>
         </div>
+        <hr>
     	<table id="table_id" class="display">
 		    <thead>
 	            <tr>
-                    <th>Profile Picture</th>
-                    <th>User Name</th>
+                  <th>Profile Picture</th>
+                  <th>User Name</th>
 	                <th>First Name</th>
 	                <th>Last Name</th>
-                    <th>Middle Name</th>
-                    <th>Actions</th>
-
-
-	               
+                  <th>Middle Name</th>
+                  <th>Actions</th>
 	            </tr>
 		    </thead>
 		        
@@ -68,10 +68,10 @@
             </div>
 
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
              
                   <input type="hidden" name="date" id="dateAdd">
-                  <button type="submit" class="btn btn-primary add">Save</button>
+                  <button type="submit" class="btn btn-outline-primary add">Save</button>
             </div>
           </form>
         </div>
@@ -96,8 +96,8 @@
                   
               </div>
               <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary">Save changes</button>
+                  <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-outline-primary">Save changes</button>
               </div>
           </form>
         </div>

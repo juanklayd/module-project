@@ -37,7 +37,7 @@ class AdminController extends Controller
          return DataTables::of($users)
             ->addColumn('actions', function($user) {
                     return '<button class="btn btn-outline-danger float-right col-md-5 mx-2 destroy" userId="'.$user->id.'" fname="'.$user->firstName.'">Delete</button>
-                            <button class="btn btn-outline-primary col-md-5 edit" userId="'.$user->id.'">Edit</button>
+                            <button class="btn btn-outline-info col-md-5 edit" userId="'.$user->id.'">Edit</button>
                             ';
                 })
             ->rawColumns(['actions'])
