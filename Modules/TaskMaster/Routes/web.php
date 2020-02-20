@@ -26,5 +26,7 @@ Route::prefix('taskmaster')->group(function() {
     Route::post('/editTask', 'TaskMasterController@editTask')->name('editTask');
     Route::post('/saveEditTask', 'TaskMasterController@saveEditTask')->name('saveEditTask');
     Route::post('/destroyTask', 'TaskMasterController@destroyTask')->name('destroyTask');
+    
+    Route::post('/updateUserDetails', 'TaskMasterController@updateUserDetails')->name('updateUserDetails');
 
 });

@@ -272,4 +272,24 @@ class TaskMasterController extends Controller
        
     }
 
+    //Update User Details
+
+    public function updateUserDetails (Request $request){
+        $user = User::find(Auth::id());
+        $userDetails = UserDetail::where('user_id', Auth::id())->first();
+
+        $userDetails->first_name= $request->firstName;
+        $userDetails->mid_name = $request->midName;
+        $userDetails->last_name =$request->lastName;
+        
+        $userDetails->save();
+
+
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return view('taskmaster::index');
+
+    }
+
 }
