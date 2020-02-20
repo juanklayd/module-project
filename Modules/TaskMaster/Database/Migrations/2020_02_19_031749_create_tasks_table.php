@@ -24,7 +24,7 @@ class CreateTasksTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->time('date_time');
-            $table->date('due_date')
+            $table->date('due_date');
             $table->string('status')->default('Pending');
             $table->string('remarks')->nullable();
             $table->timestamps();
