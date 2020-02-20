@@ -163,10 +163,12 @@
           var token = $("input[name='_token']").val();
 
     $(document).ready(function(){
-
         $('.alert').hide();
         $('.empty').hide();
         $('.emptyUpdate').hide();
+
+
+        
 
         var dataTable= $('#table_id').DataTable( {
         "ajax": "{{route('task_dtb', $project->id)}}",
@@ -179,9 +181,12 @@
             { "data": "remarks" },
             // { "data": "type_name" },
             { "data": "actions" },
-           
         ]
+
         } );
+
+
+
 
         //Adding
     $( "#addForm" ).submit(function( event ) {

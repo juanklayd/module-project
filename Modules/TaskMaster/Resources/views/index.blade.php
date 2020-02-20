@@ -3,7 +3,7 @@
 @section('content')
    <div class="alert alert-info alert-dismissible fade show" role="alert"></div>
 
-    <div class="container mt-3">
+    <div class="container">
         <span class="text-muted"> 
                     <i class="fa fa-angle-right" aria-hidden="true"></i> Projects
                   </span>
@@ -60,7 +60,7 @@
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
              
                   <input type="hidden" name="date" id="dateAdd">
-                  <button type="submit" class="btn btn-primary add">Save task</button>
+                  <button type="submit" class="btn btn-primary add">Save project</button>
             </div>
           </form>
         </div>
