@@ -1,7 +1,14 @@
 @extends('admin::layouts.master')
 
 @section('content')
+
 <div class="container">
+@if (session('message'))
+    <div class="alert alert-info" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>{{ Session::get('message') }}</div>
+    @endif
+
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

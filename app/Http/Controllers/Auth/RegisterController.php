@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 use Modules\admin\entities\UserDetail;
+use Session;
 
 class RegisterController extends Controller
 {
@@ -64,10 +65,8 @@ class RegisterController extends Controller
 
         event(new Registered($user = $this->create($request->all())));
 
-        return $this->registered($request, $user)
-                        ?: redirect($this->redirectPath());
+        return redirect('register')->with('message','Successfully Registered');
     }
-
     /**
      * Create a new user instance after a valid registration.
      *
