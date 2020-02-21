@@ -33,6 +33,7 @@ class TaskMasterController extends Controller
       $id =  Auth::id();
       $userDetails = UserDetail::where('user_id', $id)->first();
       $user = User::find($id);
+      dd($userDetails);
       if (Hash::check('123123123', $user->password)) {
         return view('taskmaster::updateProfile', compact('userDetails'));
       } else{
@@ -325,6 +326,22 @@ class TaskMasterController extends Controller
             ->with('success', 
     'Password Changed');
         
+    }
+
+    public function editProfile()
+    {
+        $id =  Auth::id();
+        $userDetails = UserDetail::where('user_id', $id)->first();
+        $user = User::find($id);
+        return view('taskmaster::editProfile', compact('userDetails'));   
+    }
+
+    public function updateProfile()
+    {
+        $id =  Auth::id();
+        $userDetails = UserDetail::where('user_id', $id)->first();
+        $user = User::find($id);
+        return view('taskmaster::editProfile', compact('userDetails'));   
     }
 
 }
