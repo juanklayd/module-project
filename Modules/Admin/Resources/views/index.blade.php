@@ -80,7 +80,14 @@
             { "data": "last_name" },
             { "data": "mid_name" },
             { "data": "actions" },
-        ]
+        ],
+        "columnDefs": [
+            { "targets": 0,
+              "render": function(data) {
+                return '<img class="img-fluid mx-auto d-block" src=images/'+data+'>'
+              }
+            }   
+          ]
         } );
 
 

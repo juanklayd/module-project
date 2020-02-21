@@ -278,10 +278,13 @@ class TaskMasterController extends Controller
         $user = User::find(Auth::id());
         $userDetails = UserDetail::where('user_id', Auth::id())->first();
 
+        $imageName = time().'.'.request()->image->getClientOriginalExtension();
+        request()->image->move(public_path('images'), $imageName);
+
         $userDetails->first_name= $request->firstName;
         $userDetails->mid_name = $request->midName;
         $userDetails->last_name =$request->lastName;
-        
+        $userDetails->profile_picture = $imageName;
         $userDetails->save();
 
 

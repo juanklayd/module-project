@@ -22,9 +22,13 @@
                 <div class="card-header">{{ __('Update Account') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('updateUserDetails') }}">
+                    <form method="POST" action="{{ route('updateUserDetails') }}"  enctype="multipart/form-data">
                         @csrf
 
+                        <div class="col-md-6">
+
+                            <input type="file" name="image" class="form-control">
+                        </div>
                         <input type="text" name="firstName" class="form-control mb-2 " placeholder="First Name" required >
 
                         <input type="text" name="midName" class="form-control mb-2 firstNameEdit" placeholder="Middle Name" required >

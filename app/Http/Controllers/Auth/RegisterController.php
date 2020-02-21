@@ -88,6 +88,7 @@ class RegisterController extends Controller
         $userDetail = new UserDetail([
             
             'user_id' => $users->id,
+            'profile_picture' => 'default-profile.png'
             
         ]);
         $userDetail->save();
