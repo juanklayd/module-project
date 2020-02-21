@@ -33,7 +33,6 @@ class TaskMasterController extends Controller
       $id =  Auth::id();
       $userDetails = UserDetail::where('user_id', $id)->first();
       $user = User::find($id);
-      dd($userDetails);
       if (Hash::check('123123123', $user->password)) {
         return view('taskmaster::updateProfile', compact('userDetails'));
       } else{
@@ -279,11 +278,11 @@ class TaskMasterController extends Controller
         $user = User::find(Auth::id());
         $userDetails = UserDetail::where('user_id', Auth::id())->first();
 
-        if($request->image != null)
-          {
+        if($request->image != null){
           $imageName = time().'.'.request()->image->getClientOriginalExtension();
         request()->image->move(public_path('images'), $imageName);
-        $userDetails->profile_picture = $imageName;}
+        $userDetails->profile_picture = $imageName;
+        }
 
         $userDetails->first_name= $request->firstName;
         $userDetails->mid_name = $request->midName;
@@ -328,22 +327,6 @@ class TaskMasterController extends Controller
             ->with('success', 
     'Password Changed');
         
-    }
-
-    public function editProfile()
-    {
-        $id =  Auth::id();
-        $userDetails = UserDetail::where('user_id', $id)->first();
-        $user = User::find($id);
-        return view('taskmaster::editProfile', compact('userDetails'));   
-    }
-
-    public function updateProfile()
-    {
-        $id =  Auth::id();
-        $userDetails = UserDetail::where('user_id', $id)->first();
-        $user = User::find($id);
-        return view('taskmaster::editProfile', compact('userDetails'));   
     }
 
 }

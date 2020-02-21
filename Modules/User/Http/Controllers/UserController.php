@@ -46,11 +46,11 @@ class UserController extends Controller
         $user = User::find(Auth::id());
         $userDetails = UserDetail::where('user_id', Auth::id())->first();
 
-        if($request->image != null)
-          {
+        if($request->image != null){
           $imageName = time().'.'.request()->image->getClientOriginalExtension();
         request()->image->move(public_path('images'), $imageName);
-        $userDetails->profile_picture = $imageName;}
+        $userDetails->profile_picture = $imageName;
+        }
 
         $userDetails->first_name= $request->firstName;
         $userDetails->mid_name = $request->midName;
@@ -60,6 +60,7 @@ class UserController extends Controller
 
         $user->password = Hash::make($request->password);
         $user->save();
+
 
         return redirect()->route('userHome');
 

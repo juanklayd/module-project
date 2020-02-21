@@ -12,7 +12,6 @@
 */
 
 Route::prefix('taskmaster')->group(function() {
-    //routes for projects
     Route::get('/', 'TaskMasterController@index')->name('taskmasterHome');
     Route::get('/project_dtb', 'TaskMasterController@project_dtb')->name('project_dtb');
     Route::post('/addProj', 'TaskMasterController@addProj')->name('addProj');
@@ -20,25 +19,18 @@ Route::prefix('taskmaster')->group(function() {
     Route::post('/saveEditProj', 'TaskMasterController@saveEditProj')->name('saveEditProj');
     Route::post('/destroyProj', 'TaskMasterController@destroyProj')->name('destroyProj');
 
-    //routes for tasks
 	Route::get('/viewTasks/{id}','TaskMasterController@viewTasks')->name('viewTasks');
     Route::get('/task_dtb/{id}', 'TaskMasterController@task_dtb')->name('task_dtb');
+
     Route::post('/addTask', 'TaskMasterController@addTask')->name('addTask');
     Route::post('/editTask', 'TaskMasterController@editTask')->name('editTask');
     Route::post('/saveEditTask', 'TaskMasterController@saveEditTask')->name('saveEditTask');
     Route::post('/destroyTask', 'TaskMasterController@destroyTask')->name('destroyTask');
     
-    //Update User details when first login
     Route::post('/updateUserDetails', 'TaskMasterController@updateUserDetails')->name('updateUserDetails');
     
-    //Change Password
+
     Route::get('/changePassword', 'TaskMasterController@changePassword')->name('changePasswordTaskMaster');
     Route::post('/', 'TaskMasterController@savePassword')->name('savePasswordTaskMaster');
-
-    //Update Profile 
-    Route::get('/editProfile', 'TaskMasterController@editProfile')->name('editProfileTaskMaster');
-    Route::post('/updateProfile', 'TaskMasterController@updateProfile')->name('updateTaskMasterProfile');
-
-
 
 });
