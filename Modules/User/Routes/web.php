@@ -15,4 +15,7 @@ Route::prefix('user')->group(function() {
     Route::get('/', 'UserController@index')->name('userHome');
     Route::post('/updateUserDetailsUsers', 'UserController@updateUserDetailsUsers')->name('updateUserDetailsUsers');
 
+    Route::get('/changePassword', 'UserController@changePassword')->name('changePasswordUser');
+    Route::post('/', 'UserController@savePassword')->name('savePasswordUser');
+
 });

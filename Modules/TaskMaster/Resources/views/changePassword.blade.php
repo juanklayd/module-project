@@ -1,4 +1,5 @@
-@extends('admin::layouts.master')
+@extends('taskmaster::layouts.master')
+
 
 @section('content')
 

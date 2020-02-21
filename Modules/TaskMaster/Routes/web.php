@@ -28,5 +28,9 @@ Route::prefix('taskmaster')->group(function() {
     Route::post('/destroyTask', 'TaskMasterController@destroyTask')->name('destroyTask');
     
     Route::post('/updateUserDetails', 'TaskMasterController@updateUserDetails')->name('updateUserDetails');
+    
+
+    Route::get('/changePassword', 'TaskMasterController@changePassword')->name('changePasswordTaskMaster');
+    Route::post('/', 'TaskMasterController@savePassword')->name('savePasswordTaskMaster');
 
 });

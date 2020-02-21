@@ -34,6 +34,9 @@
                                   <a class="dropdown-item" href="">
                                         {{ __('Generate Report') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('changePasswordUser') }}">
+                                        {{ __('Change Password') }}
+                                    </a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

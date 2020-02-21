@@ -1,4 +1,4 @@
-@extends('admin::layouts.master')
+@extends('user::layouts.master')
 
 @section('content')
 
@@ -9,7 +9,7 @@
                 <div class="card-header">{{ __('Change Password') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('savePasswordTaskMaster') }}">
+                    <form method="POST" action="{{ route('savePasswordUser') }}">
                         @csrf
 
  

@@ -62,4 +62,37 @@ class UserController extends Controller
         return view('user::index');
 
     }
+
+    public function changePassword()
+    {
+        return view('user::changePassword');
+        
+    }
+
+    public function savePassword(Request $request)
+    {
+        $message = array(
+            'password.min' => 'Please input atleast 6 characters',
+            'password.confirmed' => 'Password does not match',
+           
+        );
+        $request->validate( [
+            'password' => 'sometimes|string|min:6|confirmed',
+
+        ], $message);
+
+        $id =  Auth::id();
+
+        $user = User::find($id);
+        $user->password =Hash::make($request->password);
+        $user->save();
+
+        // return view('admin::index')->with('success', 'User Updated');
+        return redirect()
+            ->route('userHome')
+            ->with('success', 
+    'Password Changed');
+        
+    }
+
 }

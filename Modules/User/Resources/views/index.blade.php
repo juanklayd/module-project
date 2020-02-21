@@ -1,6 +1,18 @@
 @extends('user::layouts.master')
 
 @section('content')
+
+<div class="alert alertOld alert-info alert-dismissible fade show alertOld" role="alert">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+  
+</div>  
+@if(session('success'))
+    <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+         <strong>{{ session('success') }}</strong>
+    </div>
+@endif
+
     <p class="Lead">Welcome #Username! You have # task(s) assigned</p>
     <hr>
     <table class="table">
