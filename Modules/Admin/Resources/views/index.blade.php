@@ -3,7 +3,7 @@
 @section('content')
 <div class="alert alert-info alert-dismissible fade show alertOld" role="alert">
             <button type="button" class="close" data-dismiss="alert">×</button>
-  
+  asdasd
 </div>  
 @if(session('success'))
     <div class="alert alert-success alert-block">
@@ -35,7 +35,7 @@
 		        
 		</table>
 
-
+<br>
 
     <!-- Modal for Edditing -->
 

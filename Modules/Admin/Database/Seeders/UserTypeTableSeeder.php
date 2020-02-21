@@ -1,8 +1,12 @@
 <?php
 
-use Illuminate\Database\Seeder;
+namespace Modules\Admin\Database\Seeders;
 
-class UserTypeSeeder extends Seeder
+use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model;
+use Modules\Admin\Entities\UserType;
+
+class UserTypeTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,13 +15,17 @@ class UserTypeSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('user_types')->insert([
+        Model::unguard();
+
+        UserType::create([
             'type_name' => 'Admin',
         ]);
-        DB::table('user_types')->insert([
+
+        UserType::create([
             'type_name' => 'Task Master',
         ]);
-        DB::table('user_types')->insert([
+
+        UserType::create([
             'type_name' => 'User',
         ]);
     }
