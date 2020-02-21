@@ -1,8 +1,16 @@
 @extends('admin::layouts.master')
 
 @section('content')
-<div class="alert alert-info alert-dismissible fade show" role="alert"></div>
-
+<div class="alert alert-info alert-dismissible fade show alertOld" role="alert">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+  
+</div>  
+@if(session('success'))
+    <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+         <strong>{{ session('success') }}</strong>
+    </div>
+@endif
         <hr>
         <div class="row">
             <div class="col-md-8">
@@ -67,7 +75,7 @@
 
     $(document).ready(function(){
 
-        $('.alert').hide();
+        $('.alertOld').hide();
         $('.empty').hide();
         $('.emptyUpdate').hide();
 
@@ -127,9 +135,9 @@
             dataTable.ajax.reload();
 
             $('.empty').hide();
-            $('.alert').append('<span id="alertMessage">Record Updated!</span>');
-            $('.alert').show();
-            $(".alert").delay(4000).fadeOut(500);
+            $('.alertOld').append('<span id="alertMessage">Record Updated!</span>');
+            $('.alertOld').show();
+            $(".alertOld").delay(4000).fadeOut(500);
             setTimeout(function(){
               $('#alertMessage').remove();
             }, 5000);
@@ -154,9 +162,9 @@
           },
           success:function(data){
             dataTable.ajax.reload();
-            $('.alert').append('<span id="alertMessage">Record deleted!</span>');
-            $('.alert').show();
-            $(".alert").delay(4000).fadeOut(500);
+            $('.alertOld').append('<span id="alertMessage">Record deleted!</span>');
+            $('.alertOld').show();
+            $(".alertOld").delay(4000).fadeOut(500);
             setTimeout(function(){
               $('#alertMessage').remove();
             }, 5000);

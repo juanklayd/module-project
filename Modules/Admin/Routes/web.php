@@ -20,6 +20,9 @@ Route::prefix('admin')->group(function() {
     Route::post('/destroyUser', 'AdminController@destroyUser')->name('destroyUser');
 
     Route::get('/adduser', 'AdminController@adduser')->name('adduser');
+    Route::get('/changePassword', 'AdminController@changePassword')->name('changePassword');
+    Route::post('/', 'AdminController@savePassword')->name('savePassword');
+
     
 
 

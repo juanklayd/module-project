@@ -11,7 +11,7 @@ use Modules\Admin\Entities\UserDetail;
 use Modules\Admin\Entities\UserType;
 use Illuminate\Support\Facades\Hash;
 use Yajra\Datatables\Datatables;
-
+use Auth;
 
 
 class AdminController extends Controller
@@ -100,5 +100,36 @@ class AdminController extends Controller
         // $this->pickDate($request);
     }
 
+    public function changePassword()
+    {
+        return view('admin::changePassword');
+        
+    }
+
+    public function savePassword(Request $request)
+    {
+        $message = array(
+            'password.min' => 'Please input atleast 6 characters',
+            'password.confirmed' => 'Password does not match',
+           
+        );
+        $request->validate( [
+            'password' => 'sometimes|string|min:6|confirmed',
+
+        ], $message);
+
+        $id =  Auth::id();
+
+        $user = User::find($id);
+        $user->password =Hash::make($request->password);
+        $user->save();
+
+        // return view('admin::index')->with('success', 'User Updated');
+        return redirect()
+            ->route('adminHome')
+            ->with('success', 
+    'Password Changed');
+        
+    }
 
 }
