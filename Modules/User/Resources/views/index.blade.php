@@ -13,7 +13,7 @@
     </div>
 @endif
 
-    <p class="Lead">Welcome #Username! You have # task(s) assigned</p>
+    <p class="Lead">Welcome {{ $userDetails->first_name }} {{ $userDetails->last_name }}! You have # task(s) assigned</p>
     <hr>
     <table class="table">
   <thead class="thead-dark">
