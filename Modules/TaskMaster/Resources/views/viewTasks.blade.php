@@ -8,15 +8,10 @@
             <div class="form-row">
               <div class="col-md-12">
               
-                  <i class="fa fa-angle-right" aria-hidden="true"></i> <a class="lead" href="{{ url('taskmaster') }}">Projects</a>
-                  <span class="text-muted"> 
-                    <i class="fa fa-angle-right" aria-hidden="true"></i> Tasks
-                  </span>
-                  <br>
-                  <br>
+
                   <div class="row">
                     <div class="col-md-8">
-                  <h2 class="lead">Tasks for {{ $project->project_name}}</h2>
+                  <h2 class="lead">Tasks for <b>{{ $project->project_name}}</b></h2>
                 </div>
                   <div class="col-md-4">
                           <button type="button" class="btn btn-outline-dark col-md-8 float-right" id="addBtn" data-target="#addModal" data-toggle="modal" >Add a task</button>
@@ -47,6 +42,7 @@
 
                 </div>
             </div>
+            <br>
 
 
     <!-- Modal for Adding -->

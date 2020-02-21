@@ -29,12 +29,12 @@ class UserController extends Controller
     {
 
       $id =  Auth::id();
-      $userDetails = UserDetail::where('user_id', $id)->get();
+      $userDetails = UserDetail::where('user_id', $id)->first();
       $user = User::find($id);
       if (Hash::check('123123123', $user->password)) {
-        return view('user::updateProfile');
+        return view('user::updateProfile', compact('userDetails'));
       } else{
-        return view('user::index');
+        return view('user::index', compact('userDetails'));
       }
 
     
