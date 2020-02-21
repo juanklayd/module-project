@@ -12,7 +12,7 @@
 */
 
 Route::prefix('taskmaster')->group(function() {
-    Route::get('/', 'TaskMasterController@index');
+    Route::get('/', 'TaskMasterController@index')->name('taskmasterHome');
     Route::get('/project_dtb', 'TaskMasterController@project_dtb')->name('project_dtb');
     Route::post('/addProj', 'TaskMasterController@addProj')->name('addProj');
     Route::post('/editProj', 'TaskMasterController@editProj')->name('editProj');

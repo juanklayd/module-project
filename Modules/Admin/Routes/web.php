@@ -12,7 +12,7 @@
 */
 
 Route::prefix('admin')->group(function() {
-    Route::get('/', 'AdminController@index');
+    Route::get('/', 'AdminController@index')->name('adminHome');
     Route::get('/people_dtb', 'AdminController@usersShow')->name('usersShow');
     Route::post('/storeAdd', 'AdminController@storeAdd')->name('storeAdd');
     Route::post('/editUser', 'AdminController@editUser')->name('editUser');

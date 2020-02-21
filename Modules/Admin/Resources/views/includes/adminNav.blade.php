@@ -7,7 +7,7 @@
   </button>
   <div class="collapse navbar-collapse lead" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="/Admin">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="{{route('adminHome')}}">Home <span class="sr-only">(current)</span></a>
     </div>
 
     <!-- Right Side Of Navbar -->
